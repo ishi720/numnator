@@ -2,16 +2,24 @@
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+    <button @click="initialize(100)">Start</button>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import {Numnator} from './js/numnator';
 
 export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  methods: {
+    initialize(num) {
+      this.Numnator = new Numnator(num);
+    },
   }
 }
 </script>
