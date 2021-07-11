@@ -1,3 +1,5 @@
+'use strict'
+
 export class Numnator {
   constructor (n) {
     this.nlist = [];
@@ -211,11 +213,11 @@ export class Numnator {
   }
   //Xで割り切れる
   isDivided(x, n) {
-    return n % x == 0;
+    return n % x === 0;
   }
   //Pの位がX
   isPlace(p, x, n) {
-    return Math.floor(n / p) % 10 == x;
+    return Math.floor(n / p) % 10 === x;
   }
   //素数
   isPrimeNumber(x) {
