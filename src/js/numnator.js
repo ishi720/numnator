@@ -222,7 +222,7 @@ export class Numnator {
   //素数
   isPrimeNumber(x) {
     var r = true;
-    if (x === 0 || x === 1) {
+    if (x <= 1) {
       r = false;
     }
     for (var i=2; i<=x-1; i++) {
