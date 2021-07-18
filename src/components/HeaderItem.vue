@@ -7,7 +7,7 @@
 <script>
 export default {
   name: 'HeaderItem'
-}
+};
 </script>
 
 <style scoped>

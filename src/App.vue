@@ -18,35 +18,6 @@ export default {
   },
   components: {
     HeaderItem
-  },
-  methods: {
-    initialize() {
-      this.Numnator = new Numnator(this.upperRange);
-    },
-    questionOrMore(x) {
-      this.Numnator.questionOrMore(x);
-    },
-    questionOrLess(x) {
-      this.Numnator.questionOrLess(x);
-    },
-    questionAbove(x) {
-      this.Numnator.questionAbove(x);
-    },
-    questionBelow(x) {
-      this.Numnator.questionBelow(x);
-    },
-    questionDivided(x) {
-      this.Numnator.questionDivided(x);
-    },
-    questionPlace(p,x) {
-      this.Numnator.questionPlace(p,x);
-    },
-    questionPrimeNumber() {
-      this.Numnator.questionPrimeNumber();
-    },
-    questionContainsChara(x) {
-      this.Numnator.questionContainsChara(x);
-    }
   }
 }
 </script>

@@ -18,5 +18,5 @@ export default {
       upperRange: 100
     }
   }
-}
+};
 </script>
