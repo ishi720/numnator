@@ -1,9 +1,22 @@
 <template>
   <div class="play">
-    <div>{{ upperRange }}</div>
-    <router-link to="/">
-      <button>戻る</button>
-    </router-link>
+    
+    <div>
+      <button @click="questionMatch(10)">マッチ</button>
+      <button @click="questionOrMore(50)">以上</button>
+      <button @click="questionOrLess(15)">以下</button>
+      <button @click="questionAbove(20)">より上</button>
+      <button @click="questionBelow(55)">より下</button>
+      <button @click="questionDivided()">倍数</button>
+      <button @click="questionPlace(10,2)">位</button>
+      <button @click="questionPrimeNumber()">素数</button>
+      <button @click="questionContainsChara(5)">文字を含む</button>
+    </div>
+    <div>
+      <router-link to="/">
+        <button>戻る</button>
+      </router-link>
+    </div>
   </div>
 </template>
 
@@ -23,6 +36,10 @@ export default {
   methods: {
     initialize() {
       this.Numnator = new Numnator(this.upperRange);
+    },
+    questionMatch(x) {
+      this.Numnator.questionMatch(x);
+      console.log(this.Numnator.history);
     },
     questionOrMore(x) {
       this.Numnator.questionOrMore(x);
