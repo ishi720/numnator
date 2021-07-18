@@ -1,11 +1,13 @@
 <template>
   <div id="app">
+    <HeaderItem />
     <input type="number" v-model.number="upperRange">
     <button @click="initialize">Start</button>
   </div>
 </template>
 
 <script>
+import HeaderItem from './components/HeaderItem.vue';
 import {Numnator} from './js/numnator';
 
 export default {
@@ -14,6 +16,9 @@ export default {
     return {
       upperRange: 100
     };
+  },
+  components: {
+    HeaderItem
   },
   methods: {
     initialize() {
@@ -48,12 +53,19 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+  background-color: #f2f4f6;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /*
+  #1ee3cf;
+  #6b48ff;
+  */
 }
 </style>
