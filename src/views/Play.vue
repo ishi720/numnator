@@ -1,5 +1,10 @@
 <template>
   <div class="about">
-    <h1>Play page</h1>
+
+    <div>{{ $route.query['upperRange'] }}</div>
+
+    <router-link to="/">
+      <button>戻る</button>
+    </router-link>
   </div>
 </template>
