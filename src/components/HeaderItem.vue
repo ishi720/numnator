@@ -1,6 +1,6 @@
 <template>
   <header id="header">
-    <h1>Namnator</h1>
+    <h1>Numnator</h1>
   </header>
 </template>
 

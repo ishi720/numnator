@@ -1,8 +1,16 @@
 <template>
   <div id="app">
     <HeaderItem />
+
     <input type="number" v-model.number="upperRange">
     <button @click="initialize">Start</button>
+
+    
+    <router-link to="/">Home</router-link> |
+    <router-link to="/Play">play</router-link>
+
+    <router-view/>
+
   </div>
 </template>
 
