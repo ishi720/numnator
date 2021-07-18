@@ -12,8 +12,8 @@ export default {
   name: 'app',
   data () {
     return {
-      upperRange: 100,
-    }
+      upperRange: 100
+    };
   },
   methods: {
     initialize() {
@@ -41,7 +41,7 @@ export default {
       this.Numnator.questionPrimeNumber();
     },
     questionContainsChara(x) {
-      this.Numnator.questionContainsChara(x)
+      this.Numnator.questionContainsChara(x);
     }
   }
 }
