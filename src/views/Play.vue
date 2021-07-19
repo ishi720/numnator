@@ -7,10 +7,11 @@
       <button @click="questionOrLess(15)">以下</button>
       <button @click="questionAbove(20)">より上</button>
       <button @click="questionBelow(55)">より下</button>
-      <button @click="questionDivided()">倍数</button>
+      <button @click="questionDivided(3)">倍数</button>
       <button @click="questionPlace(10,2)">位</button>
       <button @click="questionPrimeNumber()">素数</button>
       <button @click="questionContainsChara(5)">文字を含む</button>
+      <button @click="questionNumberOfDigits(1)">桁数</button>
     </div>
     <div>
       <router-link to="/">
@@ -39,7 +40,6 @@ export default {
     },
     questionMatch(x) {
       this.Numnator.questionMatch(x);
-      console.log(this.Numnator.history);
     },
     questionOrMore(x) {
       this.Numnator.questionOrMore(x);
@@ -64,6 +64,9 @@ export default {
     },
     questionContainsChara(x) {
       this.Numnator.questionContainsChara(x);
+    },
+    questionNumberOfDigits(x) {
+      this.Numnator.questionNumberOfDigits(x);
     }
   }
 };

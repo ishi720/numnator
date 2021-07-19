@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 export class Numnator {
   constructor (n) {
@@ -180,14 +180,31 @@ export class Numnator {
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
       if (r) {
-        return _this.isContainsChara(n);
+        return _this.isContainsChara(x, n);
       } else {
-        return !_this.isContainsChara(n);
+        return !_this.isContainsChara(x, n);
       }
     });
     return r;
   }
 
+  // 桁数
+  questionNumberOfDigits(x) {
+    var r = this.isNumberOfDigits(x, this.answer);
+    this.history.push({
+        q: x +"桁ですか",
+        a: r
+    });
+    var _this = this;
+    this.nlist = this.nlist.filter(function(n){
+      if (r) {
+        return _this.isNumberOfDigits(x, n);
+      } else {
+        return !_this.isNumberOfDigits(x, n);
+      }
+    });
+    return r;
+  }
 
 /**
  * 判定
@@ -234,8 +251,13 @@ export class Numnator {
   }
 
   // Xの文字が含まれる
-  isContainsChara(x) {
+  isContainsChara(x, n) {
     var regExp = new RegExp(x);
-    return String(this.answer).match(regExp) !== null;
+    return String(n).match(regExp) !== null;
+  }
+
+  //X桁数
+  isNumberOfDigits(x, n) {
+    return String(n).length === x;
   }
 }
