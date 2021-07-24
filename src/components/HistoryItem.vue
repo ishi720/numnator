@@ -21,7 +21,7 @@ export default {
     history: []
   },
   watch: {
-    items: function(newHistory,oldHistory){
+    history: function(newHistory){
       this.history = newHistory;
     }
   }
