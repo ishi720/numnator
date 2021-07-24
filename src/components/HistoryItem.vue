@@ -1,7 +1,7 @@
 <template>
   <div id="history">
     <div class="historyHeader">HISTORY</div>
-   <div v-for="item in history">
+    <div v-for="item in history" :key="item.q">
       {{ item.q }} 
 
       <span v-if="item.a === true">

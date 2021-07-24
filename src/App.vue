@@ -7,7 +7,6 @@
 
 <script>
 import HeaderItem from './components/HeaderItem.vue';
-import {Numnator} from './js/numnator';
 
 export default {
   name: 'app',
