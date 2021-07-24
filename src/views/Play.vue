@@ -1,16 +1,46 @@
 <template>
   <div class="play">
     <div>
-      <button @click="questionMatch(10)">マッチ</button>
-      <button @click="questionOrMore(50)">以上</button>
-      <button @click="questionOrLess(15)">以下</button>
-      <button @click="questionAbove(20)">より上</button>
-      <button @click="questionBelow(55)">より下</button>
-      <button @click="questionDivided(3)">倍数</button>
-      <button @click="questionPlace(10,2)">位</button>
-      <button @click="questionPrimeNumber()">素数</button>
-      <button @click="questionContainsChara(5)">文字を含む</button>
-      <button @click="questionNumberOfDigits(1)">桁数</button>
+      <div>
+        <input type="number" v-model.number="matchParam">
+        <button @click="questionMatch()">マッチ</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="orMoreParam">
+        <button @click="questionOrMore()">以上</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="orLessParam">
+        <button @click="questionOrLess()">以下</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="aboveParam">
+        <button @click="questionAbove()">より上</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="belowParam">
+        <button @click="questionBelow(55)">より下</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="dividedParam">
+        <button @click="questionDivided()">倍数</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="placeParam1">
+        <input type="number" v-model.number="placeParam2">
+        <button @click="questionPlace()">位</button>
+      </div>
+      <div>
+        <button @click="questionPrimeNumber()">素数</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="containsCharaParam">
+        <button @click="questionContainsChara()">文字を含む</button>
+      </div>
+      <div>
+        <input type="number" v-model.number="numberOfDigitsParam">
+        <button @click="questionNumberOfDigits()">桁数</button>
+      </div>
     </div>
 
     <HistoryItem v-bind:history="Numnator.history" />
@@ -33,47 +63,57 @@ export default {
     return {
       upperRange: Number(this.$route.query['upperRange']),
       Numnator: "",
+      matchParam: 0,
+      orMoreParam: 0,
+      orLessParam: 0,
+      aboveParam: 0,
+      belowParam: 0,
+      dividedParam: 0,
+      placeParam1: 0,
+      placeParam2: 0,
+      containsCharaParam: 0,
+      numberOfDigitsParam: 0
     }
   },
   components: {
     HistoryItem
   },
-  created : function() {
+  created: function() {
     this.initialize();
   },
   methods: {
     initialize() {
       this.Numnator = new Numnator(this.upperRange);
     },
-    questionMatch(x) {
-      this.Numnator.questionMatch(x);
+    questionMatch() {
+      this.Numnator.questionMatch(this.matchParam);
     },
-    questionOrMore(x) {
-      this.Numnator.questionOrMore(x);
+    questionOrMore() {
+      this.Numnator.questionOrMore(this.orMoreParam);
     },
-    questionOrLess(x) {
-      this.Numnator.questionOrLess(x);
+    questionOrLess() {
+      this.Numnator.questionOrLess(this.orLessParam);
     },
-    questionAbove(x) {
-      this.Numnator.questionAbove(x);
+    questionAbove() {
+      this.Numnator.questionAbove(this.aboveParam);
     },
-    questionBelow(x) {
-      this.Numnator.questionBelow(x);
+    questionBelow() {
+      this.Numnator.questionBelow(this.belowParam);
     },
-    questionDivided(x) {
-      this.Numnator.questionDivided(x);
+    questionDivided() {
+      this.Numnator.questionDivided(this.dividedParam);
     },
-    questionPlace(p,x) {
-      this.Numnator.questionPlace(p,x);
+    questionPlace() {
+      this.Numnator.questionPlace(this.placeParam1,this.placeParam2);
     },
     questionPrimeNumber() {
       this.Numnator.questionPrimeNumber();
     },
-    questionContainsChara(x) {
-      this.Numnator.questionContainsChara(x);
+    questionContainsChara() {
+      this.Numnator.questionContainsChara(this.containsCharaParam);
     },
-    questionNumberOfDigits(x) {
-      this.Numnator.questionNumberOfDigits(x);
+    questionNumberOfDigits() {
+      this.Numnator.questionNumberOfDigits(this.numberOfDigitsParam);
     }
   }
 };
