@@ -10,19 +10,19 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
-    "express": "^4.17.1",
-    "vue": "^2.6.10",
-    "vue-router": "^3.5.2"
+    "core-js": "2.x.x",
+    "express": "4.x.x",
+    "vue": "2.x.x",
+    "vue-router": "3.x.x"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.0",
-    "@vue/cli-plugin-eslint": "^3.12.0",
-    "@vue/cli-service": "^3.12.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "@vue/cli-plugin-babel": "3.x.x",
+    "@vue/cli-plugin-eslint": "3.x.x",
+    "@vue/cli-service": "3.x.x",
+    "babel-eslint": "10.x.x",
+    "eslint": "5.x.x",
+    "eslint-plugin-vue": "5.x.x",
+    "vue-template-compiler": "2.x.x"
   },
   "eslintConfig": {
     "root": true,
