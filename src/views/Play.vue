@@ -1,6 +1,5 @@
 <template>
   <div class="play">
-    
     <div>
       <button @click="questionMatch(10)">マッチ</button>
       <button @click="questionOrMore(50)">以上</button>
@@ -13,6 +12,9 @@
       <button @click="questionContainsChara(5)">文字を含む</button>
       <button @click="questionNumberOfDigits(1)">桁数</button>
     </div>
+
+    <HistoryItem v-bind:history="Numnator.history" />
+
     <div>
       <router-link to="/">
         <button>戻る</button>
@@ -23,13 +25,18 @@
 
 <script>
 import {Numnator} from '../js/numnator';
+import HistoryItem from '../components/HistoryItem.vue';
 
 export default {
   name: 'play',
   data () {
     return {
-      upperRange: Number(this.$route.query['upperRange'])
+      upperRange: Number(this.$route.query['upperRange']),
+      Numnator: "",
     }
+  },
+  components: {
+    HistoryItem
   },
   created : function() {
     this.initialize();
