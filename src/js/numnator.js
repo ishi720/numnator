@@ -9,6 +9,8 @@ export class Numnator {
     this.setAnswer(n);
     
     this.history = [];
+
+    this.count = 0;
   }
 
   // 整数リストの作成
@@ -28,6 +30,7 @@ export class Numnator {
 
   //マッチ
   questionMatch(x) {
+    this.count++;
     var r = this.isMatch(x, this.answer);
     this.history.push({
         q: x +"ですか",
@@ -46,6 +49,7 @@ export class Numnator {
 
   //X以上
   questionOrMore(x) {
+    this.count++;
     var r = this.isOrMore(x, this.answer);
     this.history.push({
         q: x +"以上ですか",
@@ -64,6 +68,7 @@ export class Numnator {
 
   //X以下
   questionOrLess(x) {
+    this.count++;
     var r = this.isOrLess(x, this.answer);
     this.history.push({
         q: x +"以下ですか",
@@ -82,6 +87,7 @@ export class Numnator {
 
   //Xより上
   questionAbove(x) {
+    this.count++;
     var r = this.isAbove(x, this.answer);
     this.history.push({
         q: x +"より上ですか",
@@ -100,6 +106,7 @@ export class Numnator {
 
   //Xより下
   questionBelow(x) {
+    this.count++;
     var r = this.isBelow(x, this.answer);
     this.history.push({
         q: x +"より下ですか",
@@ -117,6 +124,7 @@ export class Numnator {
   }
   
   questionDivided(x) {
+    this.count++;
     var r = this.isDivided(x, this.answer);
     this.history.push({
         q: x +"で割り切れますか",
@@ -135,6 +143,7 @@ export class Numnator {
 
   //Pの位がX
   questionPlace(p,x) {
+    this.count++;
     var r = this.isPlace(p, x, this.answer);
     this.history.push({
         q: p + "桁目は" + x +"ですか",
@@ -154,6 +163,7 @@ export class Numnator {
 
   //素数
   questionPrimeNumber() {
+    this.count++;
     var r = this.isPrimeNumber(this.answer);
     this.history.push({
         q: "素数ですか",
@@ -172,6 +182,7 @@ export class Numnator {
 
   // Xの文字が含まれる
   questionContainsChara(x) {
+    this.count++;
     var r = this.isContainsChara(x, this.answer);
     this.history.push({
         q: x +"の文字は含まれますか",
@@ -190,6 +201,7 @@ export class Numnator {
 
   // 桁数
   questionNumberOfDigits(x) {
+    this.count++;
     var r = this.isNumberOfDigits(x, this.answer);
     this.history.push({
         q: x +"桁ですか",
