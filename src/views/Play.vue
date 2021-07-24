@@ -2,43 +2,43 @@
   <div class="play">
     <div>
       <div>
-        <input type="number" v-model.number="matchParam">
+        <input type="number" v-model.number="matchParam" min="0" :max="upperRange">
         <button @click="questionMatch()">マッチ</button>
       </div>
       <div>
-        <input type="number" v-model.number="orMoreParam">
+        <input type="number" v-model.number="orMoreParam" min="0" :max="upperRange">
         <button @click="questionOrMore()">以上</button>
       </div>
       <div>
-        <input type="number" v-model.number="orLessParam">
+        <input type="number" v-model.number="orLessParam" min="0" :max="upperRange">
         <button @click="questionOrLess()">以下</button>
       </div>
       <div>
-        <input type="number" v-model.number="aboveParam">
+        <input type="number" v-model.number="aboveParam" min="0" :max="upperRange">
         <button @click="questionAbove()">より上</button>
       </div>
       <div>
-        <input type="number" v-model.number="belowParam">
-        <button @click="questionBelow(55)">より下</button>
+        <input type="number" v-model.number="belowParam" min="0" :max="upperRange">
+        <button @click="questionBelow()">より下</button>
       </div>
       <div>
-        <input type="number" v-model.number="dividedParam">
+        <input type="number" v-model.number="dividedParam" min="2" :max="upperRange">
         <button @click="questionDivided()">倍数</button>
       </div>
       <div>
-        <input type="number" v-model.number="placeParam1">
-        <input type="number" v-model.number="placeParam2">
+        <input type="number" v-model.number="placeParam1" min="1" :max="upperRangeLength">
+        <input type="number" v-model.number="placeParam2" min="0" max="9">
         <button @click="questionPlace()">位</button>
       </div>
       <div>
         <button @click="questionPrimeNumber()">素数</button>
       </div>
       <div>
-        <input type="number" v-model.number="containsCharaParam">
+        <input type="number" v-model.number="containsCharaParam" min="0" max="9">
         <button @click="questionContainsChara()">文字を含む</button>
       </div>
       <div>
-        <input type="number" v-model.number="numberOfDigitsParam">
+        <input type="number" v-model.number="numberOfDigitsParam" min="1" :max="upperRangeLength">
         <button @click="questionNumberOfDigits()">桁数</button>
       </div>
     </div>
@@ -62,17 +62,18 @@ export default {
   data () {
     return {
       upperRange: Number(this.$route.query['upperRange']),
+      upperRangeLength: this.$route.query['upperRange'].length,
       Numnator: "",
       matchParam: 0,
       orMoreParam: 0,
       orLessParam: 0,
       aboveParam: 0,
       belowParam: 0,
-      dividedParam: 0,
-      placeParam1: 0,
+      dividedParam: 2,
+      placeParam1: 1,
       placeParam2: 0,
       containsCharaParam: 0,
-      numberOfDigitsParam: 0
+      numberOfDigitsParam: 1
     }
   },
   components: {

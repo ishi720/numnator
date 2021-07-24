@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-    <input type="number" v-model.number="upperRange">
+    <input type="number" v-model.number="upperRange" min="0">
 
     <router-link :to="{path:'Play',query: {upperRange: upperRange}}">
       <button>開始</button>

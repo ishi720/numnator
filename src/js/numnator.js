@@ -137,7 +137,7 @@ export class Numnator {
   questionPlace(p,x) {
     var r = this.isPlace(p, x, this.answer);
     this.history.push({
-        q: p + "の位は" + x +"ですか",
+        q: p + "桁目は" + x +"ですか",
         a: r
     });
     var _this = this;
@@ -232,9 +232,13 @@ export class Numnator {
   isDivided(x, n) {
     return n % x === 0;
   }
-  //Pの位がX
+  //P桁目がX
   isPlace(p, x, n) {
-    return Math.floor(n / p) % 10 === x;
+    var pw = 1;
+    for (var i=1;i<p;i++) {
+      pw = pw * 10;
+    }
+    return Math.floor(n / pw) % 10 === x;
   }
   //素数
   isPrimeNumber(x) {
