@@ -63,6 +63,7 @@ export default {
     return {
       upperRange: Number(this.$route.query['upperRange']),
       upperRangeLength: this.$route.query['upperRange'].length,
+      liarDegree: Number(this.$route.query['liarDegree']),
       Numnator: "",
       matchParam: 0,
       orMoreParam: 0,
@@ -84,7 +85,7 @@ export default {
   },
   methods: {
     initialize() {
-      this.Numnator = new Numnator(this.upperRange);
+      this.Numnator = new Numnator(this.upperRange,this.liarDegree);
     },
     questionMatch() {
       this.Numnator.questionMatch(this.matchParam);

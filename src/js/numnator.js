@@ -1,13 +1,15 @@
 'use strict';
 
 export class Numnator {
-  constructor (n) {
+  constructor (n,liarDegree = 0) {
     this.nlist = [];
     this.setNlist(n);
 
     this.answer;
     this.setAnswer(n);
     
+    this.liarDegree = liarDegree;
+
     this.history = [];
 
     this.count = 0;
@@ -22,6 +24,16 @@ export class Numnator {
 
   setAnswer(n) {
     this.answer = Math.floor( Math.random() * (n+1) );
+  }
+
+  //嘘つき変換
+  lier(bool) {
+    var n = Math.random();
+    if(n < 1 - this.liarDegree/100){
+      return bool;
+    } else {
+      return !bool;
+    }
   }
 
 /**
@@ -44,7 +56,6 @@ export class Numnator {
         return !_this.isMatch(x,n);
       }
     });
-    return r;
   }
 
   //X以上
@@ -53,7 +64,7 @@ export class Numnator {
     var r = this.isOrMore(x, this.answer);
     this.history.push({
         q: x +"以上ですか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -63,7 +74,6 @@ export class Numnator {
         return !_this.isOrMore(x,n);
       }
     });
-    return r;
   }
 
   //X以下
@@ -72,7 +82,7 @@ export class Numnator {
     var r = this.isOrLess(x, this.answer);
     this.history.push({
         q: x +"以下ですか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -82,7 +92,6 @@ export class Numnator {
         return !_this.isOrLess(x,n);
       }
     });
-    return r;
   }
 
   //Xより上
@@ -91,7 +100,7 @@ export class Numnator {
     var r = this.isAbove(x, this.answer);
     this.history.push({
         q: x +"より上ですか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -101,7 +110,6 @@ export class Numnator {
         return !_this.isAbove(x,n);
       }
     });
-    return r;
   }
 
   //Xより下
@@ -110,7 +118,7 @@ export class Numnator {
     var r = this.isBelow(x, this.answer);
     this.history.push({
         q: x +"より下ですか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -120,7 +128,6 @@ export class Numnator {
         return !_this.isBelow(x,n);
       }
     });
-    return r;
   }
   
   questionDivided(x) {
@@ -128,7 +135,7 @@ export class Numnator {
     var r = this.isDivided(x, this.answer);
     this.history.push({
         q: x +"で割り切れますか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -138,7 +145,6 @@ export class Numnator {
         return !_this.isDivided(x,n);
       }
     });
-    return r;
   }
 
   //Pの位がX
@@ -147,7 +153,7 @@ export class Numnator {
     var r = this.isPlace(p, x, this.answer);
     this.history.push({
         q: p + "桁目は" + x +"ですか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -157,8 +163,6 @@ export class Numnator {
         return !_this.isPlace(p,x,n);
       }
     });
-    return r;
-    
   }
 
   //素数
@@ -167,7 +171,7 @@ export class Numnator {
     var r = this.isPrimeNumber(this.answer);
     this.history.push({
         q: "素数ですか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -177,7 +181,6 @@ export class Numnator {
         return !_this.isPrimeNumber(n);
       }
     });
-    return r;
   }
 
   // Xの文字が含まれる
@@ -186,7 +189,7 @@ export class Numnator {
     var r = this.isContainsChara(x, this.answer);
     this.history.push({
         q: x +"の文字は含まれますか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -196,7 +199,6 @@ export class Numnator {
         return !_this.isContainsChara(x, n);
       }
     });
-    return r;
   }
 
   // 桁数
@@ -205,7 +207,7 @@ export class Numnator {
     var r = this.isNumberOfDigits(x, this.answer);
     this.history.push({
         q: x +"桁ですか",
-        a: r
+        a: this.lier(r)
     });
     var _this = this;
     this.nlist = this.nlist.filter(function(n){
@@ -215,7 +217,6 @@ export class Numnator {
         return !_this.isNumberOfDigits(x, n);
       }
     });
-    return r;
   }
 
 /**
