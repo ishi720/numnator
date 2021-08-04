@@ -7,11 +7,14 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "postinstall": "yarn build",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "jest -v & jest"
   },
   "dependencies": {
+    "babel-jest": "27.x.x",
     "core-js": "2.x.x",
     "express": "4.x.x",
+    "jest": "27.x.x",
     "vue": "2.x.x",
     "vue-router": "3.x.x"
   },
