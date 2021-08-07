@@ -1,12 +1,14 @@
 'use strict';
 
 export class Numnator {
-  constructor (n,liarDegree = 0) {
+  constructor (upperRange,liarDegree = 0) {
     this.nlist = [];
-    this.setNlist(n);
+    this.initNlist(upperRange);
 
     this.answer;
-    this.setAnswer(n);
+    this.initAnswer(upperRange);
+
+    this.upperRange = upperRange;
     
     this.liarDegree = liarDegree;
 
@@ -16,13 +18,13 @@ export class Numnator {
   }
 
   // 整数リストの作成
-  setNlist(n) {
+  initNlist(n) {
     for (var i = 0; i < n; i++) {
       this.nlist.push(i);
     }
   }
 
-  setAnswer(n) {
+  initAnswer(n) {
     this.answer = Math.floor( Math.random() * (n+1) );
   }
 
