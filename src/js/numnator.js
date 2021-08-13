@@ -88,7 +88,7 @@ export class Numnator {
         return !_this.isOrMore(x,n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
   //X以下
@@ -107,7 +107,7 @@ export class Numnator {
         return !_this.isOrLess(x,n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
   //Xより上
@@ -126,7 +126,7 @@ export class Numnator {
         return !_this.isAbove(x,n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
   //Xより下
@@ -145,7 +145,7 @@ export class Numnator {
         return !_this.isBelow(x,n);
       }
     });
-    return r;
+    return this.lier(r);
   }
   
   questionDivided(x) {
@@ -163,7 +163,7 @@ export class Numnator {
         return !_this.isDivided(x,n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
   //Pの位がX
@@ -182,7 +182,7 @@ export class Numnator {
         return !_this.isPlace(p,x,n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
   //素数
@@ -201,7 +201,7 @@ export class Numnator {
         return !_this.isPrimeNumber(n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
   // Xの文字が含まれる
@@ -220,7 +220,7 @@ export class Numnator {
         return !_this.isContainsChara(x, n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
   // 桁数
@@ -239,7 +239,7 @@ export class Numnator {
         return !_this.isNumberOfDigits(x, n);
       }
     });
-    return r;
+    return this.lier(r);
   }
 
 /**
