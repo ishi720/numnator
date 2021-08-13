@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint",
     "postinstall": "yarn build",
     "start": "node server.js",
-    "test": "jest -v & jest"
+    "test": "jest -v & jest",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "babel-jest": "27.x.x",
@@ -23,6 +24,7 @@
     "@vue/cli-plugin-eslint": "3.x.x",
     "@vue/cli-service": "3.x.x",
     "babel-eslint": "10.x.x",
+    "coveralls": "3.x.x",
     "eslint": "5.x.x",
     "eslint-plugin-vue": "5.x.x",
     "vue-template-compiler": "2.x.x"
