@@ -34,6 +34,10 @@ export class Numnator {
       this.#answer = n;
     } 
   }
+  // Getter
+  get answer(){
+    return this.#answer;
+  }
 
   //嘘つき変換
   lier(bool) {
