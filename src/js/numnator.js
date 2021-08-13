@@ -1,11 +1,11 @@
 'use strict';
 
 export class Numnator {
+  #answer;
   constructor (upperRange,liarDegree = 0) {
     this.nlist = [];
     this.initNlist(upperRange);
 
-    this.answer;
     this.initAnswer(upperRange);
 
     this.upperRange = upperRange;
@@ -25,7 +25,14 @@ export class Numnator {
   }
 
   initAnswer(n) {
-    this.answer = Math.floor( Math.random() * (n+1) );
+    this.#answer = Math.floor( Math.random() * (n+1) );
+  }
+
+  // Setter
+  set answer(n){
+    if (0 <= n && n <= this.upperRange) {
+      this.#answer = n;
+    } 
   }
 
   //嘘つき変換
@@ -45,7 +52,7 @@ export class Numnator {
   //マッチ
   questionMatch(x) {
     this.count++;
-    var r = this.isMatch(x, this.answer);
+    var r = this.isMatch(x, this.#answer);
     this.history.push({
         q: x +"ですか",
         a: r
@@ -63,7 +70,7 @@ export class Numnator {
   //X以上
   questionOrMore(x) {
     this.count++;
-    var r = this.isOrMore(x, this.answer);
+    var r = this.isOrMore(x, this.#answer);
     this.history.push({
         q: x +"以上ですか",
         a: this.lier(r)
@@ -81,7 +88,7 @@ export class Numnator {
   //X以下
   questionOrLess(x) {
     this.count++;
-    var r = this.isOrLess(x, this.answer);
+    var r = this.isOrLess(x, this.#answer);
     this.history.push({
         q: x +"以下ですか",
         a: this.lier(r)
@@ -99,7 +106,7 @@ export class Numnator {
   //Xより上
   questionAbove(x) {
     this.count++;
-    var r = this.isAbove(x, this.answer);
+    var r = this.isAbove(x, this.#answer);
     this.history.push({
         q: x +"より上ですか",
         a: this.lier(r)
@@ -117,7 +124,7 @@ export class Numnator {
   //Xより下
   questionBelow(x) {
     this.count++;
-    var r = this.isBelow(x, this.answer);
+    var r = this.isBelow(x, this.#answer);
     this.history.push({
         q: x +"より下ですか",
         a: this.lier(r)
@@ -134,7 +141,7 @@ export class Numnator {
   
   questionDivided(x) {
     this.count++;
-    var r = this.isDivided(x, this.answer);
+    var r = this.isDivided(x, this.#answer);
     this.history.push({
         q: x +"で割り切れますか",
         a: this.lier(r)
@@ -152,7 +159,7 @@ export class Numnator {
   //Pの位がX
   questionPlace(p,x) {
     this.count++;
-    var r = this.isPlace(p, x, this.answer);
+    var r = this.isPlace(p, x, this.#answer);
     this.history.push({
         q: p + "桁目は" + x +"ですか",
         a: this.lier(r)
@@ -170,7 +177,7 @@ export class Numnator {
   //素数
   questionPrimeNumber() {
     this.count++;
-    var r = this.isPrimeNumber(this.answer);
+    var r = this.isPrimeNumber(this.#answer);
     this.history.push({
         q: "素数ですか",
         a: this.lier(r)
@@ -188,7 +195,7 @@ export class Numnator {
   // Xの文字が含まれる
   questionContainsChara(x) {
     this.count++;
-    var r = this.isContainsChara(x, this.answer);
+    var r = this.isContainsChara(x, this.#answer);
     this.history.push({
         q: x +"の文字は含まれますか",
         a: this.lier(r)
@@ -206,7 +213,7 @@ export class Numnator {
   // 桁数
   questionNumberOfDigits(x) {
     this.count++;
-    var r = this.isNumberOfDigits(x, this.answer);
+    var r = this.isNumberOfDigits(x, this.#answer);
     this.history.push({
         q: x +"桁ですか",
         a: this.lier(r)
