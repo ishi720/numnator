@@ -21,15 +21,100 @@ expect.extend({
 });
 
 
-describe('answer_rand', () => {
+describe('answerRange', () => {
 	const upperRange = 100;
 	const numnator = new Numnator(upperRange,0);
 
-	it('answerRange', () => {
+	it('answerDefaultSet', () => {
 		expect(numnator.answer).toBeWithinRange(0,upperRange);
 	});
+
+  it('answerBoundaryValueSet1', () => {
+    numnator.answer = 0;
+    expect(numnator.answer).toBeWithinRange(0,upperRange);
+  });
+  it('answerBoundaryValueSet2', () => {
+    numnator.answer = 100;
+    expect(numnator.answer).toBeWithinRange(0,upperRange);
+  });
+
+  it('abnormalAnswerSet1', () => {
+    numnator.answer = 101;
+    expect(numnator.answer).toBeWithinRange(0,upperRange);
+  });
+
+  it('abnormalAnswerSet2', () => {
+    numnator.answer = -1;
+    expect(numnator.answer).toBeWithinRange(0,upperRange);
+  });
+
 });
 
+describe('answer_1', () => {
+  const upperRange = 10;
+  const liarDegree = 0;
+  const numnator = new Numnator(upperRange,liarDegree);
+  numnator.answer = 1;
+
+  it('questionMatch', () => {
+      expect(numnator.questionMatch(1)).toBe(true);
+      expect(numnator.questionMatch(2)).toBe(false);
+  });
+
+  it('questionOrMore', () => {
+      expect(numnator.questionOrMore(0)).toBe(true);
+      expect(numnator.questionOrMore(1)).toBe(true);
+      expect(numnator.questionOrMore(2)).toBe(false);
+  });
+
+  it('questionOrLess', () => {
+      expect(numnator.questionOrLess(0)).toBe(false);
+      expect(numnator.questionOrLess(1)).toBe(true);
+      expect(numnator.questionOrLess(2)).toBe(true);
+  });
+
+  it('questionAbove', () => {
+      expect(numnator.questionAbove(0)).toBe(true);
+      expect(numnator.questionAbove(1)).toBe(false);
+      expect(numnator.questionAbove(2)).toBe(false);
+  });
+
+  it('questionBelow', () => {
+      expect(numnator.questionBelow(0)).toBe(false);
+      expect(numnator.questionBelow(1)).toBe(false);
+      expect(numnator.questionBelow(2)).toBe(true);
+  });
+  
+  it('questionDivided', () => {
+      expect(numnator.questionDivided(2)).toBe(false);
+      expect(numnator.questionDivided(5)).toBe(false);
+      expect(numnator.questionDivided(7)).toBe(false);
+  });
+
+  it('questionPlace', () => {
+      expect(numnator.questionPlace(1,1)).toBe(true);
+      expect(numnator.questionPlace(1,0)).toBe(false);
+  });
+
+  it('questionPrimeNumber', () => {
+      expect(numnator.questionPrimeNumber()).toBe(false);
+  });
+
+  it('questionContainsChara', () => {
+      expect(numnator.questionContainsChara(0)).toBe(false);
+      expect(numnator.questionContainsChara(1)).toBe(true);
+      expect(numnator.questionContainsChara(2)).toBe(false);
+      expect(numnator.questionContainsChara(3)).toBe(false);
+      expect(numnator.questionContainsChara(4)).toBe(false);
+      expect(numnator.questionContainsChara(5)).toBe(false);
+  });
+
+  it('questionNumberOfDigits', () => {
+      expect(numnator.questionNumberOfDigits(1)).toBe(true);
+      expect(numnator.questionNumberOfDigits(2)).toBe(false);
+      expect(numnator.questionNumberOfDigits(3)).toBe(false);
+  });
+});
 
 describe('answer_10', () => {
   const upperRange = 100;
