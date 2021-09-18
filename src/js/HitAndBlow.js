@@ -11,7 +11,7 @@ export class HitAndBlow {
     var blowCnt = 0;
     var _this = this;
     this.answer.forEach(function(v,i){
-      if (_this.answer[1] === arr[i]) {
+      if (_this.answer[i] === arr[i]) {
         hitCnt++;
       }
       if (_this.answer.includes(arr[i])) {
