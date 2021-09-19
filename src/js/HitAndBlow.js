@@ -1,8 +1,8 @@
 'use strict';
 
 export class HitAndBlow {
+  #answer = [1,2,3];
   constructor () {
-    this.answer = [1,2,3];
     this.count = 0;
   }
 
@@ -20,4 +20,14 @@ export class HitAndBlow {
     });
     return [hitCnt,blowCnt-hitCnt];
   }
+
+  // Setter
+  set answer(arr){
+    this.#answer = arr;
+  }
+  // Getter
+  get answer(){
+    return this.#answer;
+  }
+
 }
