@@ -28,4 +28,8 @@ describe('HitAndBlow', () => {
   it('question_0_1', () => {
     expect(hb.question([6,5,2])).toEqual([0,1]);
   });
+
+  it('slash', () => {
+    expect(hb.slash()).toBe(2);
+  });
 });

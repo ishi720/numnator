@@ -20,6 +20,12 @@ export class HitAndBlow {
     });
     return [hitCnt,blowCnt-hitCnt];
   }
+  
+  slash() {
+    var max = Math.max(...this.answer);
+    var min = Math.min(...this.answer);
+    return max - min;
+  }
 
   // Setter
   set answer(arr){
