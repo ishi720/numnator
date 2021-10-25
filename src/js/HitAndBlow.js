@@ -27,6 +27,12 @@ export class HitAndBlow {
     return max - min;
   }
 
+  total() {
+    return this.answer.reduce(function(previous,current){
+      return previous + current;
+    });
+  }
+
   // Setter
   set answer(arr){
     this.#answer = arr;

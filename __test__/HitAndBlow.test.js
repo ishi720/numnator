@@ -32,4 +32,8 @@ describe('HitAndBlow', () => {
   it('slash', () => {
     expect(hb.slash()).toBe(2);
   });
+
+  it('total', () => {
+    expect(hb.total()).toBe(6);
+  });
 });
