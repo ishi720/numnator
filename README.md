@@ -26,3 +26,7 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Heroku
+https://numnator.herokuapp.com/
