@@ -8,14 +8,14 @@
     "lint": "./node_modules/.bin/vue-cli-service lint",
     "postinstall": "yarn build",
     "start": "node server.js",
-    "test": "jest -v & jest --coverage --no-cache",
+    "test": "jest --version & jest --coverage --no-cache",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "babel-jest": "27.x.x",
     "core-js": "2.x.x",
     "express": "4.x.x",
-    "jest": "27.x.x",
+    "jest": "29.x.x",
     "vue": "2.x.x",
     "vue-router": "3.x.x"
   },
