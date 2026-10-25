@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        # Vite 8 / Babel 8 が動く Node のバージョン
+        node-version: [22, 24]
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: yarn
+
+      # postinstall で yarn build も実行される
+      - run: yarn install --frozen-lockfile
+
+      - run: yarn lint
+
+      - run: yarn test
+
+      - name: Coveralls
+        if: matrix.node-version == 24
+        uses: coverallsapp/github-action@v2
+        with:
+          file: coverage/lcov.info
