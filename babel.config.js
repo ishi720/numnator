@@ -1,11 +1,9 @@
+// Jest 用 (アプリのビルドは Vite が行う)
 module.exports = {
   presets: [
     [
-      "@vue/app", 
-      { useBuiltIns: "entry" }
-    ] 
-  ],
-  plugins: [
-    '@babel/plugin-transform-modules-commonjs',
+      "@babel/preset-env",
+      { targets: { node: "current" } }
+    ]
   ]
 }

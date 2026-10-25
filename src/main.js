@@ -1,10 +1,18 @@
-import Vue from 'vue';
+import { createApp } from 'vue';
 import App from './App.vue';
-import router from './router'
+import router from './router';
 
-Vue.config.productionTip = false;
+const gaId = import.meta.env.VUE_APP_GOOGLE_ANALYTICS_ID;
+if (gaId) {
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+  document.head.appendChild(script);
 
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app');
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', gaId);
+}
+
+createApp(App).use(router).mount('#app');

@@ -1,8 +1,8 @@
 <template>
   <div id="history">
     <div class="historyHeader">HISTORY</div>
-    <div v-for="item in history" :key="item.q">
-      {{ item.q }} 
+    <div v-for="(item, index) in history" :key="index">
+      {{ item.q }}
 
       <span v-if="item.a === true">
         Yes
@@ -18,11 +18,9 @@
 export default {
   name: 'HistoryItem',
   props: {
-    history: []
-  },
-  watch: {
-    history: function(newHistory){
-      this.history = newHistory;
+    history: {
+      type: Array,
+      default: () => []
     }
   }
 };
