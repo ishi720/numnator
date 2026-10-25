@@ -256,3 +256,36 @@ describe('answer_101_lier', () => {
       expect(numnator.questionNumberOfDigits(3)).toBe(false);
   });
 });
+
+describe('gameState', () => {
+  it('initialState', () => {
+    const numnator = new Numnator(100, 0, 10);
+    expect(numnator.remaining).toBe(10);
+    expect(numnator.isCleared).toBe(false);
+    expect(numnator.isFinished).toBe(false);
+  });
+
+  it('clearedByMatch', () => {
+    const numnator = new Numnator(100, 0, 10);
+    numnator.answer = 50;
+    numnator.questionOrMore(30);
+    numnator.questionMatch(40);
+    expect(numnator.isCleared).toBe(false);
+    numnator.questionMatch(50);
+    expect(numnator.isCleared).toBe(true);
+    expect(numnator.isFinished).toBe(true);
+    expect(numnator.remaining).toBe(7);
+  });
+
+  it('finishedByMaxCount', () => {
+    const numnator = new Numnator(100, 0, 3);
+    numnator.answer = 50;
+    numnator.questionOrMore(30);
+    numnator.questionPrimeNumber();
+    expect(numnator.isFinished).toBe(false);
+    numnator.questionMatch(40);
+    expect(numnator.remaining).toBe(0);
+    expect(numnator.isCleared).toBe(false);
+    expect(numnator.isFinished).toBe(true);
+  });
+});

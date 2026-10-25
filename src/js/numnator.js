@@ -1,8 +1,14 @@
 'use strict';
 
+// 質問と回答をあわせて何回まで行えるか
+export const MAX_COUNT = 10;
+
+// 隠す数字の上限 (0〜UPPER_RANGE)
+export const UPPER_RANGE = 100;
+
 export class Numnator {
   #answer;
-  constructor (upperRange,liarDegree = 0) {
+  constructor (upperRange,liarDegree = 0,maxCount = MAX_COUNT) {
     this.nlist = [];
     this.initNlist(upperRange);
 
@@ -15,6 +21,20 @@ export class Numnator {
     this.history = [];
 
     this.count = 0;
+
+    this.maxCount = maxCount;
+
+    this.isCleared = false;
+  }
+
+  // 残り回数
+  get remaining() {
+    return Math.max(this.maxCount - this.count, 0);
+  }
+
+  // 正解したか、回数を使い切ったら終了
+  get isFinished() {
+    return this.isCleared || this.remaining === 0;
   }
 
   // 整数リストの作成
@@ -57,6 +77,9 @@ export class Numnator {
   questionMatch(x) {
     this.count++;
     const r = this.isMatch(x, this.#answer);
+    if (r) {
+      this.isCleared = true;
+    }
     this.history.push({
         q: x +"ですか",
         a: r

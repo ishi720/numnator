@@ -1,30 +1,32 @@
 <template>
   <div class="home">
-    <div class="input-group">
-      <span>範囲： </span>
-      <input type="number" v-model.number="upperRange" min="0">
-    </div>
+    <div class="card">
+      <p class="lead">
+        質問を{{ maxCount }}回以内で0〜{{ upperRange }} の数字を当ててください。
+      </p>
 
-    <div class="input-group">
-      <span>嘘つき度： </span>
-      <input type="number" v-model.number="liarDegree" min="0" max="100">
-    </div>
+      <label class="input-group">
+        <span>嘘つき度 (%)</span>
+        <input type="number" v-model.number="liarDegree" min="0" max="100">
+      </label>
 
-    <div class="button-container">
-      <router-link :to="{name: 'play', query: { upperRange: upperRange, liarDegree: liarDegree }}">
-        <button>開始</button>
-      </router-link>
+      <div class="button-container">
+        <router-link class="btn" :to="{name: 'play', query: { liarDegree: liarDegree }}">開始</router-link>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { MAX_COUNT, UPPER_RANGE } from '../js/numnator';
+
 export default {
   name: 'home',
   data() {
     return {
-      upperRange: 100,
-      liarDegree: 0
+      upperRange: UPPER_RANGE,
+      liarDegree: 0,
+      maxCount: MAX_COUNT
     };
   }
 };
@@ -33,54 +35,34 @@ export default {
 <style scoped>
 .home {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-  top: 0;
-  bottom: 0;
-  position: absolute;
-  margin: auto;
-  left: 0;
-  right: 0;
+  padding: 32px 16px;
+}
+
+.card {
+  width: 100%;
+  max-width: 420px;
+}
+
+.lead {
+  margin: 0 0 20px;
+  line-height: 1.6;
 }
 
 .input-group {
   margin: 10px 0;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
   font-size: 1.2rem;
-}
-
-.input-group span {
-  margin-right: 10px;
-}
-
-input[type="number"] {
-  padding: 5px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 80px;
 }
 
 .button-container {
   margin-top: 20px;
 }
 
-button {
-  padding: 10px 20px;
+.btn {
   font-size: 1.2rem;
-  color: #fff;
-  background-color: #007bff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #0056b3;
 }
 </style>

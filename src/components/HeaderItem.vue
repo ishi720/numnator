@@ -16,6 +16,7 @@ header {
   color: #f2f4f6;
 }
 h1 {
-  margin: 0 0 10px 0;
+  margin: 0;
+  padding: 8px 0;
 }
 </style>

@@ -1,16 +1,15 @@
 <template>
-  <div id="history">
+  <div class="history card">
     <div class="historyHeader">HISTORY</div>
-    <div v-for="(item, index) in history" :key="index">
-      {{ item.q }}
-
-      <span v-if="item.a === true">
-        Yes
-      </span>
-      <span v-else>
-        No
-      </span>
-    </div>
+    <p v-if="history.length === 0" class="empty">まだ質問していません</p>
+    <ol v-else>
+      <li v-for="(item, index) in history" :key="index">
+        <span class="question">{{ item.q }}</span>
+        <span class="badge" :class="item.a === true ? 'yes' : 'no'">
+          {{ item.a === true ? 'Yes' : 'No' }}
+        </span>
+      </li>
+    </ol>
   </div>
 </template>
 
@@ -27,25 +26,49 @@ export default {
 </script>
 
 <style scoped>
-#history {
-  width: 200px;
-  right: 0px;
-  bottom: 0px;
-  top:  37px;
-  background-color: #555;
-  position: absolute;
-  overflow: auto;
-  padding:  5px;
-  color: #f2f4f6;
+.history {
   text-align: left;
-  font-family: monospace;
 }
 .historyHeader {
   font-weight: bold;
   text-align: center;
-  font-size:  16px;
-  border-bottom: solid 1px #f2f4f6;
-  padding: 5px;
-  margin-bottom: 5px;
+  font-size: 16px;
+  border-bottom: solid 1px #dde2e7;
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+}
+.empty {
+  margin: 0;
+  text-align: center;
+  color: #6c757d;
+}
+ol {
+  margin: 0;
+  padding-left: 1.8em;
+}
+li {
+  padding: 4px 0;
+}
+li + li {
+  border-top: 1px dashed #eef0f2;
+}
+.question {
+  margin-right: 8px;
+}
+.badge {
+  display: inline-block;
+  min-width: 2.5em;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-align: center;
+  color: #fff;
+}
+.badge.yes {
+  background-color: #1e8e3e;
+}
+.badge.no {
+  background-color: #c0392b;
 }
 </style>
