@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <HistoryItem v-bind:history="Numnator.history" />
+    <HistoryItem :history="history" />
 
     <div>
       <router-link to="/">
@@ -54,6 +54,7 @@
 </template>
 
 <script>
+import { markRaw } from 'vue';
 import {Numnator} from '../js/numnator';
 import HistoryItem from '../components/HistoryItem.vue';
 
@@ -64,7 +65,8 @@ export default {
       upperRange: Number(this.$route.query['upperRange']),
       upperRangeLength: this.$route.query['upperRange'].length,
       liarDegree: Number(this.$route.query['liarDegree']),
-      Numnator: "",
+      numnator: null,
+      history: [],
       matchParam: 0,
       orMoreParam: 0,
       orLessParam: 0,
@@ -85,37 +87,52 @@ export default {
   },
   methods: {
     initialize() {
-      this.Numnator = new Numnator(this.upperRange,this.liarDegree);
+      // private フィールドを持つクラスは Proxy 化すると動かないため markRaw する
+      this.numnator = markRaw(new Numnator(this.upperRange,this.liarDegree));
+      this.syncHistory();
+    },
+    syncHistory() {
+      this.history = [...this.numnator.history];
     },
     questionMatch() {
-      this.Numnator.questionMatch(this.matchParam);
+      this.numnator.questionMatch(this.matchParam);
+      this.syncHistory();
     },
     questionOrMore() {
-      this.Numnator.questionOrMore(this.orMoreParam);
+      this.numnator.questionOrMore(this.orMoreParam);
+      this.syncHistory();
     },
     questionOrLess() {
-      this.Numnator.questionOrLess(this.orLessParam);
+      this.numnator.questionOrLess(this.orLessParam);
+      this.syncHistory();
     },
     questionAbove() {
-      this.Numnator.questionAbove(this.aboveParam);
+      this.numnator.questionAbove(this.aboveParam);
+      this.syncHistory();
     },
     questionBelow() {
-      this.Numnator.questionBelow(this.belowParam);
+      this.numnator.questionBelow(this.belowParam);
+      this.syncHistory();
     },
     questionDivided() {
-      this.Numnator.questionDivided(this.dividedParam);
+      this.numnator.questionDivided(this.dividedParam);
+      this.syncHistory();
     },
     questionPlace() {
-      this.Numnator.questionPlace(this.placeParam1,this.placeParam2);
+      this.numnator.questionPlace(this.placeParam1,this.placeParam2);
+      this.syncHistory();
     },
     questionPrimeNumber() {
-      this.Numnator.questionPrimeNumber();
+      this.numnator.questionPrimeNumber();
+      this.syncHistory();
     },
     questionContainsChara() {
-      this.Numnator.questionContainsChara(this.containsCharaParam);
+      this.numnator.questionContainsChara(this.containsCharaParam);
+      this.syncHistory();
     },
     questionNumberOfDigits() {
-      this.Numnator.questionNumberOfDigits(this.numberOfDigitsParam);
+      this.numnator.questionNumberOfDigits(this.numberOfDigitsParam);
+      this.syncHistory();
     }
   }
 };

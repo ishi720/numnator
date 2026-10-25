@@ -11,7 +11,7 @@
     </div>
 
     <div class="button-container">
-      <router-link :to="{path:'Play', query: { upperRange: upperRange, liarDegree: liarDegree }}">
+      <router-link :to="{name: 'play', query: { upperRange: upperRange, liarDegree: liarDegree }}">
         <button>開始</button>
       </router-link>
     </div>
