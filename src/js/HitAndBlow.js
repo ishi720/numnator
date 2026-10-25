@@ -7,14 +7,13 @@ export class HitAndBlow {
   }
 
   question(arr) {
-    var hitCnt = 0;
-    var blowCnt = 0;
-    var _this = this;
-    this.answer.forEach(function(v,i){
-      if (_this.answer[i] === arr[i]) {
+    let hitCnt = 0;
+    let blowCnt = 0;
+    this.answer.forEach((v,i) => {
+      if (this.answer[i] === arr[i]) {
         hitCnt++;
       }
-      if (_this.answer.includes(arr[i])) {
+      if (this.answer.includes(arr[i])) {
         blowCnt++;
       }
     });
@@ -22,13 +21,13 @@ export class HitAndBlow {
   }
   
   slash() {
-    var max = Math.max(...this.answer);
-    var min = Math.min(...this.answer);
+    const max = Math.max(...this.answer);
+    const min = Math.min(...this.answer);
     return max - min;
   }
 
   total() {
-    return this.answer.reduce(function(previous,current){
+    return this.answer.reduce((previous,current) => {
       return previous + current;
     });
   }

@@ -19,7 +19,7 @@ export class Numnator {
 
   // 整数リストの作成
   initNlist(n) {
-    for (var i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
       this.nlist.push(i);
     }
   }
@@ -41,7 +41,7 @@ export class Numnator {
 
   //嘘つき変換
   lier(bool) {
-    var n = Math.random();
+    const n = Math.random();
     if(n < 1 - this.liarDegree/100){
       return bool;
     } else {
@@ -56,17 +56,16 @@ export class Numnator {
   //マッチ
   questionMatch(x) {
     this.count++;
-    var r = this.isMatch(x, this.#answer);
+    const r = this.isMatch(x, this.#answer);
     this.history.push({
         q: x +"ですか",
         a: r
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r){
-        return _this.isMatch(x,n);
+        return this.isMatch(x,n);
       } else {
-        return !_this.isMatch(x,n);
+        return !this.isMatch(x,n);
       }
     });
     return r;
@@ -75,17 +74,16 @@ export class Numnator {
   //X以上
   questionOrMore(x) {
     this.count++;
-    var r = this.isOrMore(x, this.#answer);
+    const r = this.isOrMore(x, this.#answer);
     this.history.push({
         q: x +"以上ですか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r){
-        return _this.isOrMore(x,n);
+        return this.isOrMore(x,n);
       } else {
-        return !_this.isOrMore(x,n);
+        return !this.isOrMore(x,n);
       }
     });
     return this.lier(r);
@@ -94,17 +92,16 @@ export class Numnator {
   //X以下
   questionOrLess(x) {
     this.count++;
-    var r = this.isOrLess(x, this.#answer);
+    const r = this.isOrLess(x, this.#answer);
     this.history.push({
         q: x +"以下ですか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isOrLess(x,n);
+        return this.isOrLess(x,n);
       } else {
-        return !_this.isOrLess(x,n);
+        return !this.isOrLess(x,n);
       }
     });
     return this.lier(r);
@@ -113,17 +110,16 @@ export class Numnator {
   //Xより上
   questionAbove(x) {
     this.count++;
-    var r = this.isAbove(x, this.#answer);
+    const r = this.isAbove(x, this.#answer);
     this.history.push({
         q: x +"より上ですか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isAbove(x,n);
+        return this.isAbove(x,n);
       } else {
-        return !_this.isAbove(x,n);
+        return !this.isAbove(x,n);
       }
     });
     return this.lier(r);
@@ -132,17 +128,16 @@ export class Numnator {
   //Xより下
   questionBelow(x) {
     this.count++;
-    var r = this.isBelow(x, this.#answer);
+    const r = this.isBelow(x, this.#answer);
     this.history.push({
         q: x +"より下ですか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isBelow(x,n);
+        return this.isBelow(x,n);
       } else {
-        return !_this.isBelow(x,n);
+        return !this.isBelow(x,n);
       }
     });
     return this.lier(r);
@@ -150,17 +145,16 @@ export class Numnator {
   
   questionDivided(x) {
     this.count++;
-    var r = this.isDivided(x, this.#answer);
+    const r = this.isDivided(x, this.#answer);
     this.history.push({
         q: x +"で割り切れますか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isDivided(x,n);
+        return this.isDivided(x,n);
       } else {
-        return !_this.isDivided(x,n);
+        return !this.isDivided(x,n);
       }
     });
     return this.lier(r);
@@ -169,17 +163,16 @@ export class Numnator {
   //Pの位がX
   questionPlace(p,x) {
     this.count++;
-    var r = this.isPlace(p, x, this.#answer);
+    const r = this.isPlace(p, x, this.#answer);
     this.history.push({
         q: p + "桁目は" + x +"ですか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isPlace(p,x,n);
+        return this.isPlace(p,x,n);
       } else {
-        return !_this.isPlace(p,x,n);
+        return !this.isPlace(p,x,n);
       }
     });
     return this.lier(r);
@@ -188,17 +181,16 @@ export class Numnator {
   //素数
   questionPrimeNumber() {
     this.count++;
-    var r = this.isPrimeNumber(this.#answer);
+    const r = this.isPrimeNumber(this.#answer);
     this.history.push({
         q: "素数ですか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isPrimeNumber(n);
+        return this.isPrimeNumber(n);
       } else {
-        return !_this.isPrimeNumber(n);
+        return !this.isPrimeNumber(n);
       }
     });
     return this.lier(r);
@@ -207,17 +199,16 @@ export class Numnator {
   // Xの文字が含まれる
   questionContainsChara(x) {
     this.count++;
-    var r = this.isContainsChara(x, this.#answer);
+    const r = this.isContainsChara(x, this.#answer);
     this.history.push({
         q: x +"の文字は含まれますか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isContainsChara(x, n);
+        return this.isContainsChara(x, n);
       } else {
-        return !_this.isContainsChara(x, n);
+        return !this.isContainsChara(x, n);
       }
     });
     return this.lier(r);
@@ -226,17 +217,16 @@ export class Numnator {
   // 桁数
   questionNumberOfDigits(x) {
     this.count++;
-    var r = this.isNumberOfDigits(x, this.#answer);
+    const r = this.isNumberOfDigits(x, this.#answer);
     this.history.push({
         q: x +"桁ですか",
         a: this.lier(r)
     });
-    var _this = this;
-    this.nlist = this.nlist.filter(function(n){
+    this.nlist = this.nlist.filter((n) => {
       if (r) {
-        return _this.isNumberOfDigits(x, n);
+        return this.isNumberOfDigits(x, n);
       } else {
-        return !_this.isNumberOfDigits(x, n);
+        return !this.isNumberOfDigits(x, n);
       }
     });
     return this.lier(r);
@@ -270,19 +260,19 @@ export class Numnator {
   }
   //P桁目がX
   isPlace(p, x, n) {
-    var pw = 1;
-    for (var i=1;i<p;i++) {
+    let pw = 1;
+    for (let i=1;i<p;i++) {
       pw = pw * 10;
     }
     return Math.floor(n / pw) % 10 === x;
   }
   //素数
   isPrimeNumber(x) {
-    var r = true;
+    let r = true;
     if (x <= 1) {
       r = false;
     }
-    for (var i=2; i<=x-1; i++) {
+    for (let i=2; i<=x-1; i++) {
       if (x % i === 0) {
         r = false;
       }
@@ -292,7 +282,7 @@ export class Numnator {
 
   // Xの文字が含まれる
   isContainsChara(x, n) {
-    var regExp = new RegExp(x);
+    const regExp = new RegExp(x);
     return String(n).match(regExp) !== null;
   }
 

@@ -38,7 +38,6 @@ export default {
   justify-content: center;
   height: 100vh;
   font-family: Arial, sans-serif;
-  display: flex;
   top: 0;
   bottom: 0;
   position: absolute;

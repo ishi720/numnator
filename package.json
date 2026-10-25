@@ -2,6 +2,9 @@
   "name": "numnator",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "^22.18.0 || >=24.11.0"
+  },
   "scripts": {
     "serve": "vite",
     "build": "vite build",
