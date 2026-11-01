@@ -135,7 +135,7 @@ export class Numnator {
     this.count++;
     const r = this.isAbove(x, this.#answer);
     this.history.push({
-        q: x +"より上ですか",
+        q: x +"より大きいですか",
         a: this.lier(r)
     });
     this.nlist = this.nlist.filter((n) => {
@@ -153,7 +153,7 @@ export class Numnator {
     this.count++;
     const r = this.isBelow(x, this.#answer);
     this.history.push({
-        q: x +"より下ですか",
+        q: x +"より小さいですか",
         a: this.lier(r)
     });
     this.nlist = this.nlist.filter((n) => {
@@ -224,7 +224,7 @@ export class Numnator {
     this.count++;
     const r = this.isContainsChara(x, this.#answer);
     this.history.push({
-        q: x +"の文字は含まれますか",
+        q: x +"の文字を含みますか",
         a: this.lier(r)
     });
     this.nlist = this.nlist.filter((n) => {
