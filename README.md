@@ -26,7 +26,3 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://vite.dev/config/).
-
-
-### Heroku
-https://numnator.herokuapp.com/
